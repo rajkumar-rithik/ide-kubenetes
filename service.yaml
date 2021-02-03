@@ -1,12 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: repl1-svc
+  name: repl-svc
   labels:
     app: repl-app
 spec:
+  tls:
+  - secretName: tls-secret
   ports:
-    - port: 443
+    - protocol: https
+      port: 443
       targetPort: 8080
       name: https
   selector:
