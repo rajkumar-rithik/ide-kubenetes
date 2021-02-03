@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: repl-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: repl-app
+  template:
+    metadata:
+      labels:
+        app: repl-app
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - name: repl-app
+        image: rajkumar3241/repl:v5
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "0.25G"
+            cpu: "0.2"
+          limits:
+            memory: "0.75G"
+            cpu: "0.4"
+        readinessProbe:
+          tcpSocket:
+              port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 3
+        livenessProbe:
+          tcpSocket:
+              port: 8080
+          periodSeconds: 3
