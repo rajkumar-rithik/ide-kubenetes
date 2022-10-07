@@ -1,8 +1,8 @@
-apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
 metadata:
   name: default-deny-egress
-  namespace: default
+  namespace: repl
 spec:
   podSelector:
     matchLabels: {}
