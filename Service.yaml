@@ -1,17 +1,17 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
   name: repl-svc
+  namespace: repl
   labels:
     app: repl-app
 spec:
-  tls:
-  - secretName: tls-secret
   ports:
-    - protocol: https
-      port: 443
+    - name: http
+      protocol: TCP
+      port: 8080
       targetPort: 8080
-      name: https
   selector:
     app: repl-app
-  type: LoadBalancer
+  type: ClusterIP
+  
