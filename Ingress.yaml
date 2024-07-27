@@ -17,12 +17,23 @@ spec:
   tls:
     - hosts:
         - repl.online-ide.com
+        - test.online-cpp.com
         - repl.online-cpp.com
         - repl.online-java.com
         - repl.online-python.com
       secretName: tls-secret
   rules:
     - host: repl.online-ide.com
+      http:
+        paths:
+          - path: /*
+            pathType: Prefix
+            backend:
+              service:
+                name: repl-svc
+                port:
+                  number: 8080
+    - host: test.online-cpp.com
       http:
         paths:
           - path: /*
