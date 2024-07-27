@@ -14,10 +14,10 @@ spec:
         app: repl-app
     spec:
       imagePullSecrets:
-        - name: do-regcred
+        - name: docker-reg-cred
       containers:
       - name: repl-app
-        image: rajkumar3241/repl:v4
+        image: registry.digitalocean.com/docker-reg-cred/rajkumar3241/repl:v4
         ports:
         - containerPort: 8080
         resources:
