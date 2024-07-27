@@ -12,9 +12,9 @@
 ```
 kubectl create namespace repl
 kubectl config set-context --current --namespace=repl
-kubectl apply -f deploy.yaml
-kubectl apply -f service.yaml
-kubectl apply -f ingress.yaml
-kubectl apply -f network.yaml
-kubectl apply -f autoscaler.yaml
+kubectl apply -f Deploy.yaml
+kubectl apply -f Service.yaml
+kubectl apply -f Ingress.yaml
+kubectl apply -f NetworkPolicy.yaml
+kubectl apply -f Autoscaler.yaml
 ```
