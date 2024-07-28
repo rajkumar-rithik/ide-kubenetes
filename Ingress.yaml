@@ -4,11 +4,12 @@ metadata:
   name: repl-ingress
   namespace: repl
   annotations:
-    kubernetes.io/ingress.class: nginx
+    spec.ingressClassName: nginx
     nginx.ingress.kubernetes.io/affinity: cookie
     nginx.ingress.kubernetes.io/session-cookie-expires: '172800'
     nginx.ingress.kubernetes.io/session-cookie-name: route
 spec:
+  ingressClassName: nginx
   defaultBackend:
     service:
       name: repl-svc
@@ -26,7 +27,7 @@ spec:
     - host: repl.online-ide.com
       http:
         paths:
-          - path: /*
+          - path: /
             pathType: Prefix
             backend:
               service:
@@ -36,7 +37,7 @@ spec:
     - host: test.online-cpp.com
       http:
         paths:
-          - path: /*
+          - path: /
             pathType: Prefix
             backend:
               service:
@@ -46,7 +47,7 @@ spec:
     - host: repl.online-java.com
       http:
         paths:
-          - path: /*
+          - path: /
             pathType: Prefix
             backend:
               service:
@@ -56,7 +57,7 @@ spec:
     - host: repl.online-cpp.com
       http:
         paths:
-          - path: /*
+          - path: /
             pathType: Prefix
             backend:
               service:
@@ -66,7 +67,7 @@ spec:
     - host: repl.online-python.com
       http:
         paths:
-          - path: /*
+          - path: /
             pathType: Prefix
             backend:
               service:
